@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/bdd.h
+stdio.h
+-
+iostream
+-
+
+/Users/astra/Documents/6_sem/Mat_log/limit.hpp
+bdd.h
+-
+utils.hpp
+/Users/astra/Documents/6_sem/Mat_log/utils.hpp
+
+/Users/astra/Documents/6_sem/Mat_log/main.cpp
+iostream
+-
+bdd.h
+/Users/astra/Documents/6_sem/Mat_log/bdd.h
+utils.hpp
+/Users/astra/Documents/6_sem/Mat_log/utils.hpp
+limit.hpp
+/Users/astra/Documents/6_sem/Mat_log/limit.hpp
+
+/Users/astra/Documents/6_sem/Mat_log/utils.hpp
+cmath
+-
+

@@ -1,0 +1,3 @@
+/Users/astra/Documents/6_sem/Mat_log/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/astra/Documents/6_sem/Mat_log/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/astra/Documents/6_sem/Mat_log/cmake-build-debug/CMakeFiles/Mat_log.dir
