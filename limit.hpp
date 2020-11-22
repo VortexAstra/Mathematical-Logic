@@ -25,12 +25,12 @@ void init(bdd p[propertyNumbers][objectNumbers][objectNumbers])
   }
 }
 
-void limitation_1(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers], int propertyNumber, int objectNumber, int propertyValue)
+void limitation1(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers], int propertyNumber, int objectNumber, int propertyValue)
 {
   tree &= p[propertyNumber][objectNumber][propertyValue];
 }
 
-void limitation_2(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers], int propertyNumber1, int propertyValue1, int propertyNumber2, int propertyValue2)
+void limitation2(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers], int propertyNumber1, int propertyValue1, int propertyNumber2, int propertyValue2)
 {
   bdd treeTemp = bddtrue;
 
@@ -59,12 +59,12 @@ bdd lim3(bdd p[propertyNumbers][objectNumbers][objectNumbers], NeighbourRelation
   return treeTemp;
 }
 
-void limitation_3(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers], NeighbourRelations neighbour, int propertyNumber1, int propertyValue1, int propertyNumber2, int propertyValue2)
+void limitation3(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers], NeighbourRelations neighbour, int propertyNumber1, int propertyValue1, int propertyNumber2, int propertyValue2)
 {
   tree &= lim3(p, neighbour, propertyNumber1, propertyValue1, propertyNumber2, propertyValue2);
 }
 
-void limitation_4(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers], int propertyNumber1, int propertyValue1, int propertyNumber2, int propertyValue2)
+void limitation4(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers], int propertyNumber1, int propertyValue1, int propertyNumber2, int propertyValue2)
 {
   bdd treeTmp = bddfalse;
 
@@ -74,7 +74,7 @@ void limitation_4(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers
   tree &= treeTmp;
 }
 
-void limitation_5(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers])  //property values are different
+void limitation5(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers])  //property values are different
 {
   for (int m = 0; m < propertyNumbers; ++m) {
     for (int i = 0; i < objectNumbers - 1; ++i) {
@@ -87,7 +87,7 @@ void limitation_5(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers
   }
 }
 
-void limitation_6(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers])	//property values are < objectNumbers
+void limitation6(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers])	//property values are < objectNumbers
 {
   bdd treeTemp = bddtrue;
 
@@ -105,7 +105,7 @@ void limitation_6(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers
   tree &= treeTemp;
 }
 
-void limitation_7(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers])
+void limitation7(bdd& tree, bdd p[propertyNumbers][objectNumbers][objectNumbers])
 {
   for (int i = 0; i < objectNumbers - 1; i++)
     for (int j = 0; j < objectNumbers; j++)
