@@ -7,6 +7,7 @@
 
 #include <bdd.h>
 #include "utils.hpp"
+#include "NeighbourRelations.hpp"
 
 void init(bdd p[propertyNumbers][objectNumbers][objectNumbers])
 {

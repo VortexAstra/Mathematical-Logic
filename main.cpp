@@ -2,6 +2,7 @@
 #include "bdd.h"
 #include "utils.hpp"
 #include "limit.hpp"
+#include "NeighbourRelations.hpp"
 
 int main()
 {
@@ -11,59 +12,59 @@ int main()
   bdd_setcacheratio(1000);
 //  Число булевых пер
   bdd_setvarnum(N_VAR);
-  bdd p[propertyNumbers][objectNumbers][objectNumbers];
-  init(p);
+  bdd bddArrayWithSource[propertyNumbers][objectNumbers][objectNumbers];
+  init(bddArrayWithSource);
 
-  bdd tree = bddtrue;
+  bdd bddTree = bddtrue;
 // 5 6 3 1 1 1 1
-  limitation1(tree, p, 0, 0, 0);
-  limitation1(tree, p, 0, 1, 1);
-  limitation1(tree, p, 3, 2, 1);
-  limitation1(tree, p, 2, 6, 7);
-  limitation1(tree, p, 2, 4, 5);
+  limitation1(bddTree, bddArrayWithSource, 0, 0, 0);
+  limitation1(bddTree, bddArrayWithSource, 0, 1, 1);
+  limitation1(bddTree, bddArrayWithSource, 3, 2, 1);
+  limitation1(bddTree, bddArrayWithSource, 2, 6, 7);
+  limitation1(bddTree, bddArrayWithSource, 2, 4, 5);
 //extra
-  limitation1(tree, p, 1, 8, 6);
-  limitation1(tree, p, 3, 5, 3);
-  limitation1(tree, p, 0, 5, 8);
-  limitation1(tree, p, 1, 0, 4);
-  limitation1(tree, p, 0, 3, 6);
-  limitation1(tree, p, 1, 6, 2);
-  limitation1(tree, p, 2, 2, 0);
-  limitation1(tree, p, 2, 5, 2);
-  limitation1(tree, p, 3, 6, 5);
-  limitation1(tree, p, 1, 1, 1);
-  limitation1(tree, p, 3, 7, 4);
-  limitation1(tree, p, 1, 2, 0);
+  limitation1(bddTree, bddArrayWithSource, 1, 8, 6);
+  limitation1(bddTree, bddArrayWithSource, 3, 5, 3);
+  limitation1(bddTree, bddArrayWithSource, 0, 5, 8);
+  limitation1(bddTree, bddArrayWithSource, 1, 0, 4);
+  limitation1(bddTree, bddArrayWithSource, 0, 3, 6);
+  limitation1(bddTree, bddArrayWithSource, 1, 6, 2);
+  limitation1(bddTree, bddArrayWithSource, 2, 2, 0);
+  limitation1(bddTree, bddArrayWithSource, 2, 5, 2);
+  limitation1(bddTree, bddArrayWithSource, 3, 6, 5);
+  limitation1(bddTree, bddArrayWithSource, 1, 1, 1);
+  limitation1(bddTree, bddArrayWithSource, 3, 7, 4);
+  limitation1(bddTree, bddArrayWithSource, 1, 2, 0);
 
 //если одно то другое ипликация
-  limitation2(tree, p, 2, 6, 1, 5);
-  limitation2(tree, p, 0, 3, 2, 6);
-  limitation2(tree, p, 1, 8, 2, 4);
-  limitation2(tree, p, 2, 7, 0, 7);
-  limitation2(tree, p, 2, 8, 0, 2);
-  limitation2(tree, p, 2, 1, 3, 6);
+  limitation2(bddTree, bddArrayWithSource, 2, 6, 1, 5);
+  limitation2(bddTree, bddArrayWithSource, 0, 3, 2, 6);
+  limitation2(bddTree, bddArrayWithSource, 1, 8, 2, 4);
+  limitation2(bddTree, bddArrayWithSource, 2, 7, 0, 7);
+  limitation2(bddTree, bddArrayWithSource, 2, 8, 0, 2);
+  limitation2(bddTree, bddArrayWithSource, 2, 1, 3, 6);
 
-  limitation2(tree, p, 0, 6, 3, 8);
-  limitation2(tree, p, 0, 4, 1, 7);
+  limitation2(bddTree, bddArrayWithSource, 0, 6, 3, 8);
+  limitation2(bddTree, bddArrayWithSource, 0, 4, 1, 7);
 
 //сверху снизу в зависимости о тусловия
-  limitation3(tree, p, NeighbourRelations::Right, 0, 5, 2, 1);
-  limitation3(tree, p, NeighbourRelations::Right, 0, 0, 3, 2);
-  limitation3(tree, p, NeighbourRelations::DOWN, 1, 4, 1, 8);
+  limitation3(bddTree, bddArrayWithSource, NeighbourRelations::Right, 0, 5, 2, 1);
+  limitation3(bddTree, bddArrayWithSource, NeighbourRelations::Right, 0, 0, 3, 2);
+  limitation3(bddTree, bddArrayWithSource, NeighbourRelations::DOWN, 1, 4, 1, 8);
 //стоит рядом
-  limitation4(tree, p, 1, 5, 3, 7);
+  limitation4(bddTree, bddArrayWithSource, 1, 5, 3, 7);
 
 //  ПО УМОЛЧАНИЕ знаечние параметров не совпадает
-  limitation5(tree, p);
+  limitation5(bddTree, bddArrayWithSource);
 //  (prop numbers )значение должно быть меньше < N
-  limitation6(tree, p);
+  limitation6(bddTree, bddArrayWithSource);
 //сумма свойств объектов-соседей не должна быть больше K
-  limitation7(tree, p);
+  limitation7(bddTree, bddArrayWithSource);
 
-  int satcount = bdd_satcount(tree);
+  int satcount = bdd_satcount(bddTree);
   std::cout << satcount << " solutions:" << std::endl;
   if (satcount)
-    bdd_allsat(tree, fun);
+    bdd_allsat(bddTree, fun);
 
   bdd_done();
 

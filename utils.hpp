@@ -16,9 +16,6 @@ const int LOG_N = std::ceil(std::log2(objectNumbers)); //ceil наим цело�
 const int N_VAR = 144; // objectNumbers * propertyNumbers * LOG_N
 char var[N_VAR];
 
-enum NeighbourRelations {
-  Right,
-  DOWN
-};
+
 
 #endif //MAT_LOG_UTILS_HPP
